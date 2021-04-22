@@ -1,0 +1,11 @@
+<view class="page">
+  <view class="title">
+    <text>相关条款</text>
+  </view>
+  <view class="text">
+    <text>1：本程序不会刻意的收集用户的隐私信息也不会使用用户的信息进行任何的非法的操作！！！
+    </text>
+    <text>2：本人承诺所填内容真实有效，如有虚报、漏报等行为，所产生的后果均由本人承担所有的责任！！！
+    </text>
+  </view>
+</view>

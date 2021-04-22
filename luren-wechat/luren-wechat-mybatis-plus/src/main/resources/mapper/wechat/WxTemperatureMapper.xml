@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luren.wechat.mapper.WxTemperatureMapper">
+  <resultMap id="BaseResultMap" type="com.luren.wechat.domain.WxTemperature">
+    <!--@mbg.generated-->
+    <!--@Table wx_temperature-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="temperature" jdbcType="FLOAT" property="temperature" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, open_id, temperature, `location`, `status`, create_by, create_time, update_by,update_time, remark
+  </sql>
+</mapper>

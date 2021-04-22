@@ -1,0 +1,5 @@
+@import "../../../common/common.wxss";
+
+.agree {
+  padding-top: 5.7em;
+}

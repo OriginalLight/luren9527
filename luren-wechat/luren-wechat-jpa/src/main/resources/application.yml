@@ -1,0 +1,60 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 443
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  # undertow 配置
+  undertow:
+    # HTTP post内容的最大大小。当值为-1时，默认值为大小是无限的
+    max-http-post-size: -1
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    # 每块buffer的空间大小,越小的空间被利用越充分
+    buffer-size: 512
+    # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+    io-threads: 8
+    # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    worker-threads: 256
+    # 是否分配的直接内存
+    direct-buffers: true
+  http2:
+    enabled: true
+  http:
+    port: 8080
+  ssl:
+    enabled: true
+    key-store: classpath:www.devliuhh.xyz.jks
+    key-store-password: o8g0j9j4uu66
+
+spring:
+    freemarker:
+      check-template-location: false
+    profiles:
+      active: @profiles.active@
+    jackson:
+      time-zone: GMT+8
+    data:
+      redis:
+        repositories:
+          enabled: false
+
+    #配置 Jpa
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      open-in-view: true
+
+    redis:
+      #数据库索引
+      database: 0
+      host: 121.5.70.141
+      port: 6379
+      password: wcnm741741..
+      #连接超时时间
+
+# 微信小程序配置
+wxMini:
+  appId: wxb2209b11a194eec0
+  secret: eeaae6cad11dfb64965c7686e5d4cbc0

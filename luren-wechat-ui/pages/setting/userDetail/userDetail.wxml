@@ -1,0 +1,37 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">详细信息</view>
+    <view class="page__desc">请输入信息然后提交</view>
+  </view>
+  <view class="page__bd">
+    <van-cell-group title="个人信息">
+      <van-field value="{{ userInfo.name }}" label="姓名" data-field="name" placeholder="请输入姓名" clearable clickable size="large" title-width="3.5em" bind:change="inputChange" error-message="{{errorList.name}}" />
+      <van-field value="{{ userInfo.number }}" data-field="number" label="学号" clearable clickable placeholder="请输入学号" type="number" maxlength="10" size="large" title-width="3.5em" bind:change="inputChange" error-message="{{errorList.number}}" />
+      <van-field value="{{ deptName }}" label="班级" readonly clickable placeholder="请选择班级" is-link size="large" title-width="3.5em" bindtap="showPicker" />
+      <van-field value="{{ userInfo.mobile }}" data-field="mobile" label="电话" placeholder="请输入电话号码" clearable clickable size="large" title-width="3.5em" type="number" maxlength="11" bind:change="inputChange" error-message="{{errorList.mobile}}" />
+      <van-field value="{{ userInfo.location }}" data-field="location" label="居住地" clickable placeholder="请输入或选择居住地" size="large" right-icon="/images/map.png" right-icon-class="custom-icon" bind:click-icon="setLocation" title-width="3.5em" bind:change="inputChange" error-message="{{errorList.location}}" />
+    </van-cell-group>
+    <van-cell-group title="紧急联系人">
+      <van-field value="{{ userInfo.emergencyContact }}" data-field="emergencyContact" label="姓名" placeholder="请输入姓名" clearable clickable size="large" title-width="3.5em" bind:change="inputChange" error-message="{{errorList.emergencyContact}}" />
+      <van-field value="{{ userInfo.emergencyContactMobile }}" data-field="emergencyContactMobile" label="电话" placeholder="请输入电话" clearable clickable size="large" title-width="3.5em" type="number" maxlength="11" bind:change="inputChange" error-message="{{errorList.emergencyContactMobile}}" />
+    </van-cell-group>
+    <view class="submit">
+      <label class="agree">
+        <van-checkbox icon-size="15px" value="{{isAgree}}" custom-class="agree" checked-color="#6149f6" bind:change="onChange">
+          <view>
+            阅读并同意
+            <navigator url="/pages/public/agreement/agreement">《相关条款》</navigator>
+          </view>
+        </van-checkbox>
+      </label>
+      <van-button type="primary" bindtap="submitForm" color="linear-gradient(to right, #4bb0ff, #6149f6)">
+        确定
+      </van-button>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" />
+  <van-popup show="{{ showPicker }}" position="bottom" custom-style="height: 50%" bind:close="onPickerCancel">
+    <van-picker show-toolbar title="请选择班级" columns="{{ columns }}" value-key="label" bind:change="onPickerChange" bind:confirm="onPickerConfirm" bind:cancel="onPickerCancel" />
+  </van-popup>
+</view>

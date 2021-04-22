@@ -1,0 +1,98 @@
+<!-- pages/home/leave-record/leave-record.wxml -->
+<view class="page">
+    <view class="page__hd">
+        <image class="page__image" src="/images/record.png"></image>
+        <view class="page__title">请假记录</view>
+        <view class="page__desc">新填报的请假记录如没更新请下拉刷新</view>
+    </view>
+    <van-tabs active="a">
+        <van-tab title="待审核" name="a">
+            <van-collapse accordion value="{{ activeName }}" bind:change="onChange" custom-class="van-collapse">
+                <block wx:for="{{unCheckedRecords}}" wx:key="item">
+                    <block wx:if="{{item.checkStatus == 0}}">
+                        <van-collapse-item name="{{item.id}}" size="large" content-class="van-collapse-item">
+                            <block wx:if="{{item.status == 0}}">
+                                <text slot="title" class="ok">{{item.createTime}}</text>
+                            </block>
+                            <block wx:if="{{item.status == 1}}">
+                                <text slot="title" class="warning">{{item.createTime}}</text>
+                            </block>
+                            <block wx:if="{{item.status == 2}}">
+                                <text slot="title" class="error">{{item.createTime}}</text>
+                            </block>
+                            <text class="text">姓名：{{item.createBy}}</text>
+                            <text class="text">请假时间：{{item.time}}</text>
+                            <block wx:if="{{item.remark != null && item.remark != ''}}">
+                                <text class="text">备注：{{item.remark}}</text>
+                            </block>
+                            <van-button type="primary" data-record="{{item}}" bindtap="reSet" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)">
+                                撤回
+                            </van-button>
+                        </van-collapse-item>
+                    </block>
+                </block>
+            </van-collapse>
+        </van-tab>
+        <van-tab title="已审核" name="b">
+            <van-dropdown-menu active-color="#6149f6">
+                <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="dropdownLeftChange" />
+                <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="dropdownRightChange" />
+            </van-dropdown-menu>
+            <van-collapse accordion value="{{ activeName }}" bind:change="onChange" custom-class="van-collapse">
+                <block wx:for="{{showCheckedRecords}}" wx:key="item">
+                    <block wx:if="{{item.checkStatus == 1}}">
+                        <van-collapse-item name="{{item.id}}" size="large" content-class="van-collapse-item">
+                            <block wx:if="{{item.status == 0}}">
+                                <text slot="title" class="ok">{{item.createTime}}</text>
+                            </block>
+                            <block wx:if="{{item.status == 1}}">
+                                <text slot="title" class="warning">{{item.createTime}}</text>
+                            </block>
+                            <block wx:if="{{item.status == 2}}">
+                                <text slot="title" class="error">{{item.createTime}}</text>
+                            </block>
+                            <text class="text">姓名：{{item.createBy}}</text>
+                            <text class="text">请假时间：{{item.time}}</text>
+                            <block wx:if="{{item.remark != null && item.remark != ''}}">
+                                <text class="text">备注：{{item.remark}}</text>
+                            </block>
+                            <block wx:if="{{item.checkBy != null && item.checkBy != ''}}">
+                                <text class="text">审核人：{{item.checkBy}}</text>
+                            </block>
+                            <block wx:if="{{item.checTime != null && item.checTime != ''}}">
+                                <text class="text">审核时间：{{item.checkTime}}</text>
+                            </block>
+                            <text class="ok">审核通过</text>
+                        </van-collapse-item>
+                    </block>
+                    <block wx:if="{{item.checkStatus == 2}}">
+                        <van-collapse-item name="{{item.id}}" size="large" content-class="van-collapse-item">
+                            <block wx:if="{{item.status == 0}}">
+                                <text slot="title" class="ok">{{item.createTime}}</text>
+                            </block>
+                            <block wx:if="{{item.status == 1}}">
+                                <text slot="title" class="warning">{{item.createTime}}</text>
+                            </block>
+                            <block wx:if="{{item.status == 2}}">
+                                <text slot="title" class="error">{{item.createTime}}</text>
+                            </block>
+                            <text class="text">姓名：{{item.createBy}}</text>
+                            <text class="text">请假时间：{{item.time}}</text>
+                            <block wx:if="{{item.remark != null && item.remark != ''}}">
+                                <text class="text">备注：{{item.remark}}</text>
+                            </block>
+                            <block wx:if="{{item.checkBy != null && item.checkBy != ''}}">
+                                <text class="text">审核人：{{item.checkBy}}</text>
+                            </block>
+                            <block wx:if="{{item.checTime != null && item.checTime != ''}}">
+                                <text class="text">审核时间：{{item.checkTime}}</text>
+                            </block>
+                            <text class="error">审核不通过</text>
+                        </van-collapse-item>
+                    </block>
+                </block>
+            </van-collapse>
+        </van-tab>
+    </van-tabs>
+    <van-toast id="van-toast" />
+</view>

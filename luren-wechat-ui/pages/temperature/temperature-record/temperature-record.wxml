@@ -1,0 +1,35 @@
+<view class="page">
+  <view class="page__hd">
+    <image class="page__image" src="/images/record.png"></image>
+    <view class="page__title">日报记录</view>
+    <view class="page__desc">新填报的日报如没更新请下拉刷新</view>
+  </view>
+  <view>
+    <van-dropdown-menu active-color="#6149f6">
+      <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="dropdownLeftChange" />
+      <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="dropdownRightChange" />
+    </van-dropdown-menu>
+    <van-collapse accordion value="{{ activeName }}" bind:change="onChange" custom-class="van-collapse">
+      <block wx:for="{{showRecords}}" wx:key="item">
+        <van-collapse-item name="{{item.id}}" size="large" content-class="van-collapse-item">
+          <block wx:if="{{item.status == 0}}">
+            <text slot="title" class="ok">{{item.createTime}}</text>
+          </block>
+          <block wx:if="{{item.status == 1}}">
+            <text slot="title" class="warning">{{item.createTime}}</text>
+          </block>
+          <block wx:if="{{item.status == 2}}">
+            <text slot="title" class="error">{{item.createTime}}</text>
+          </block>
+          <text class="text">体温：{{item.temperature}}℃</text>
+          <text class="text">姓名：{{item.createBy}}</text>
+          <text class="text">地点：{{item.location}}</text>
+          <block wx:if="{{item.remark != null && item.remark != ''}}">
+            <text class="text">备注：{{item.remark}}</text>
+          </block>
+        </van-collapse-item>
+      </block>
+    </van-collapse>
+  </view>
+  <van-toast id="van-toast" />
+</view>

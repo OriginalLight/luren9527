@@ -1,0 +1,27 @@
+<view class="page">
+    <view class="page__hd">
+        <image class="page__image" src="/images/leave.png"></image>
+        <view class="page__title">请假申请</view>
+        <view class="page__desc">请输入申请信息然后提交</view>
+    </view>
+    <van-cell-group title="行程信息">
+        <van-field value="{{ date }}" label="时间" clickable placeholder="请选择请假开始和结束时间" size="large" right-icon="/images/time.png" right-icon-class="custom-icon" readonly title-width="3.5em" bindtap="onDisplay" error-message="{{errorList.time}}" />
+        <van-field value="{{ wxLeave.remark }}" label="备注" data-field="remark" clickable placeholder="请输入请假原因" right-icon="/images/remark.png" size="large" right-icon-class="custom-icon" type="textarea" rows="1" autosize title-width="3.5em" bind:change="inputChange" maxlength="255" error-message="{{errorList.remark}}"/>
+    </van-cell-group>
+    <view class="submit">
+        <label class="agree">
+            <van-checkbox icon-size="15px" value="{{isAgree}}" custom-class="agree" checked-color="#6149f6" bind:change="onChange">
+                <view>
+                    阅读并同意
+                    <navigator url="/pages/public/agreement/agreement">《相关条款》</navigator>
+                </view>
+            </van-checkbox>
+        </label>
+        <van-button type="primary" bindtap="submitForm" color="linear-gradient(to right, #4bb0ff, #6149f6)">
+            确定
+        </van-button>
+    </view>
+    <van-toast id="van-toast" />
+    <van-dialog id="van-dialog" />
+    <van-calendar show="{{ show }}" type="range" bind:close="onClose" bind:confirm="onConfirm" />
+</view>

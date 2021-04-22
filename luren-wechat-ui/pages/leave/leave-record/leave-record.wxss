@@ -1,0 +1,6 @@
+@import "../../../common/common.wxss";
+
+.van-button--primary {
+    width:6em;
+    float:right;
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luren.wechat.mapper.WxBackMapper">
+  <resultMap id="BaseResultMap" type="com.luren.wechat.domain.WxBack">
+    <!--@mbg.generated-->
+    <!--@Table wx_back-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="from_place" jdbcType="VARCHAR" property="fromPlace" />
+    <result column="from_time" jdbcType="TIMESTAMP" property="fromTime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="check_status" jdbcType="TINYINT" property="checkStatus" />
+    <result column="check_by" jdbcType="VARCHAR" property="checkBy" />
+    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, open_id, from_place, from_time, `status`, check_status, check_by, check_time, 
+    create_by, create_time, update_by, update_time, remark
+  </sql>
+</mapper>

@@ -1,0 +1,40 @@
+@import "../../../common/common.wxss";
+
+.page__hd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page__title {
+  font-size: x-large;
+  font-weight: 500;
+
+}
+.submit {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 1.2em;
+}
+.van-button--primary {
+  font-size: 20px;
+  width: 150px;
+  margin-top: 2em;
+}
+.agree {
+  display: block;
+  font-size: 14px;
+  margin: auto;
+  padding-top: 1em;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.agree navigator {
+  color: var(--weui-LINK);
+  display: inline;
+}
+
+.van-cell{
+  padding-top: 0.2em;
+}

@@ -1,0 +1,15 @@
+<view class="page">
+    <view class="page__hd">
+        <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar" />
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+    <view class="page__bd">
+        <van-cell-group title="设置">
+            <van-cell title="详细信息" is-link url="./userDetail/userDetail" size="large" icon="/images/form.png" clickable />
+            <van-cell title="授权管理" bind:click="openSetting" is-link size="large" icon="/images/permission.png" clickable />
+            <van-cell title="退出登录" bind:click="onClickConfirm" is-link size="large" icon="/images/logout.png" clickable />
+        </van-cell-group>
+    </view>
+    <van-toast id="van-toast" />
+    <van-dialog id="van-dialog" />
+</view>

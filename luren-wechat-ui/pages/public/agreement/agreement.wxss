@@ -1,0 +1,19 @@
+@import "../../../common/common.wxss";
+
+.page{
+  text-align: center;
+}
+.title{
+  padding-top: 2em;
+  padding-bottom: 1em;
+  font-size: x-large;
+  font-weight: 600;
+}
+.text{
+  font-style: normal;
+  font-weight: 400;
+  margin-left:2em;
+  margin-right:2em;
+  margin-top: 1em;
+  text-align: left;
+}

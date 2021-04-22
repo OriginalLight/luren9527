@@ -1,0 +1,18 @@
+<import src="../../common/head.wxml" />
+<import src="../../common/foot.wxml" />
+<view class="container">
+    <template is="head" />
+    <view class="page-body">
+        <view class="page-section">
+            <view class="userinfo-avatar">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <open-data type="userNickName"></open-data>
+            <van-button type="primary" bindtap="doLogin" color="linear-gradient(to right, #4bb0ff, #6149f6)">
+                微信登录
+            </van-button>
+        </view>
+        <template is="foot" />
+    </view>
+    <van-toast id="van-toast" />
+</view>

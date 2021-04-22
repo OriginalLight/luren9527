@@ -1,0 +1,37 @@
+<view class="page">
+    <block wx:if="{{hasRecord}}">
+        <view class="page__hd">
+            <view class="page__title">今日已经填报</view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="page__hd">
+            <image class="page__image" src="/images/temperature.png"></image>
+            <view class="page__title">健康日报</view>
+            <view class="page__desc">请输入日报信息然后提交</view>
+        </view>
+        <van-cell-group title="日报信息">
+            <van-field value="{{ wxTemperature.temperature }}℃" right-icon="/images/temperature.png" right-icon-class="custom-icon" label="体温" readonly clickable size="large" title-width="3.5em" bindtap="showPicker" />
+            <van-field value="{{ wxTemperature.location }}" right-icon="/images/map.png" right-icon-class="custom-icon" label="地点" readonly clickable size="large" title-width="3.5em" />
+            <van-field value="{{ wxTemperature.remark }}" right-icon="/images/remark.png" right-icon-class="custom-icon" label="备注" type="textarea" placeholder="请输入备注" rows="1" autosize clickable size="large" title-width="3.5em" bind:change="formInputChange" maxlength="255" />
+        </van-cell-group>
+        <view class="submit">
+            <label class="agree">
+                <van-checkbox icon-size="15px" value="{{isAgree}}" custom-class="agree" checked-color="#6149f6" bind:change="onChange">
+                    <view>
+                        阅读并同意
+                        <navigator url="/pages/public/agreement/agreement">《相关条款》</navigator>
+                    </view>
+                </van-checkbox>
+            </label>
+            <van-button type="primary" bindtap="submitForm" color="linear-gradient(to right, #4bb0ff, #6149f6)">
+                确定
+            </van-button>
+        </view>
+    </block>
+    <van-toast id="van-toast" />
+    <van-dialog id="van-dialog" />
+    <van-popup show="{{ showPicker }}" position="bottom" custom-style="height: 50%" bind:close="onPickerCancel">
+        <van-picker show-toolbar title="请选择体温" columns="{{ columns }}" value-key="label" bind:change="onPickerChange" bind:confirm="onPickerConfirm" bind:cancel="onPickerCancel" />
+    </van-popup>
+</view>

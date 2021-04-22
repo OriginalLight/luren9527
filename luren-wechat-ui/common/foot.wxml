@@ -1,0 +1,10 @@
+<template name="foot">
+    <view class="weui-footer weui-footer_fixed-bottom">
+        <view class="weui-footer__links">
+            <navigator url="https://gitee.com/LAO_MO/healthplatform" class="weui-footer__link">
+                HealthPlatform
+            </navigator>
+        </view>
+        <view class="weui-footer__text">Copyright © 2021 LiuHH</view>
+    </view>
+</template>
